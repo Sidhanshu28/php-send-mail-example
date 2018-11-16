@@ -38,7 +38,7 @@ if($_POST)
 		E-mail send
 	\*------------------------------------*/
 	//Recipient email, Replace with own email here
-	$to_email = "sidhanshumonga28@gmail.com";
+	$to_email = "sidharth@braveston.com";
 	//email headers
 	$headers  = "Content-type: text/html; charset=utf-8" . "\r\n";
 	$headers .= "Reply-To: " . $sender_email . "\r\n";
