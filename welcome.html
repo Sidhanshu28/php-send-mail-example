@@ -1,0 +1,37 @@
+<html>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+var sendData = function(){
+		event.preventDefault();
+ 		var proceed = true;
+ 		if(proceed) //everything looks good! proceed...
+		{
+			//get input field values data to be sent to server
+			post_data = {
+				'name'      : String( $('#name').val() ),
+				'email'     : String( $('#email').val() ),
+				'content'  : String( $('#content').val() )
+			};
+ 			//Ajax post data to server
+			$.post('welcome.php', post_data, function(response)
+			{
+  				//load json data from server and output message
+				//it probably should be refactored a bit...
+                console.log(response);
+
+ 			}, 'json');
+ 		}
+	};
+</script>
+<body>
+
+<form type="post">
+Name: <input type="text" id="name"><br>
+E-mail: <input type="text" id="email"><br>
+Content: <input type="text" id="content"><br>
+<button onclick="sendData()" >Submit</button>
+</form>
+
+</body>
+</html>
