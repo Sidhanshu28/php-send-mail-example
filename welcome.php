@@ -39,6 +39,7 @@ if($_POST)
 	\*------------------------------------*/
 	//Recipient email, Replace with own email here
 	$to_email = "sidharth@braveston.com";
+	$to_email_2 = "anothermailtosend.com"
 	//email headers
 	$headers  = "Content-type: text/html; charset=utf-8" . "\r\n";
 	$headers .= "Reply-To: " . $sender_email . "\r\n";
@@ -50,11 +51,27 @@ if($_POST)
 	$message_body .= "<b>Message:</b> \r\n <br>" . $message_content;
 	//send mail function
 	$send_mail = mail($to_email, $message_subject, $message_body, $headers);
+	$send_mail_2 = mail($to_email_2, $message_subject, $message_body, $headers);
 	/*------------------------------------*\
 		E-mail status
 	\*------------------------------------*/
 	//If mail couldn't be sent output error. Check your PHP email configuration.
 	if(!$send_mail)
+	{
+		$output = json_encode(array('type'=>'error', 'text' => 'There was an error while sending message.'));
+		die($output);
+	}
+	else
+	{
+		$output = json_encode(array('type'=>'message', 'text' => 'Thanks for message, ' . $sender_name . '. <br> I will reply as fast as I can.'));
+		die($output);
+	}
+	
+	/*------------------------------------*\
+		E-mail status second
+	\*------------------------------------*/
+	//If mail couldn't be sent output error. Check your PHP email configuration.
+	if(!$send_mail_2)
 	{
 		$output = json_encode(array('type'=>'error', 'text' => 'There was an error while sending message.'));
 		die($output);
